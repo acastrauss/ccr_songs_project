@@ -5,6 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CCR_songs"
         mc:Ignorable="d"
-        Title="DodajPesmu" Height="450" Width="800">
-    
+        Title="DodajPesmu" Width="1096.429" Height="656.25"
+        
+        SizeToContent="WidthAndHeight"  WindowStyle="None"
+        AllowsTransparency="True" Background="Transparent" MouseDown="Window_MouseDown">
+    <Canvas Margin="6,-12,-7,44" Width="1096.429" Height="656.25">
+        <Canvas.Resources>
+            <DropShadowEffect x:Key="mouseOverShadow" Color="DarkGreen" Direction="330" Opacity="60"/>
+        </Canvas.Resources>
+
+        <Path Stroke="#5b8778" StrokeThickness="2" Name="UIPath" Height="593.232" Stretch="Fill" Width="1046.76" Canvas.Top="26.653" RenderTransformOrigin="0.5,0.5" Canvas.Left="18.12" >
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-0.109"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-0.572"/>
+                </TransformGroup>
+            </Path.RenderTransform>
+            <Path.Fill>
+                <ImageBrush ImageSource="ccr1.jpg"></ImageBrush>
+            </Path.Fill>
+            <Path.Data>
+                <PathGeometry >
+                    <PathFigure StartPoint="0,0">
+                        <ArcSegment Point="150, 0" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                        <ArcSegment Point="300, 0" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                        <ArcSegment Point="450, 0" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                        <ArcSegment Point="600, 0" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                        <ArcSegment Point="750, 0" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                        <ArcSegment Point="900, 0" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                        <ArcSegment Point="1050, 0" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                        <ArcSegment Point="1050, 150" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                        <ArcSegment Point="1050, 300" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                        <ArcSegment Point="1050, 450" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                        <ArcSegment Point="1050, 600" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                        <ArcSegment Point="900, 600" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                        <ArcSegment Point="750, 600" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                        <ArcSegment Point="600, 600" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                        <ArcSegment Point="450, 600" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                        <ArcSegment Point="300, 600" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                        <ArcSegment Point="150, 600" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                        <ArcSegment Point="0, 600" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                        <ArcSegment Point="0, 450" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                        <ArcSegment Point="0, 300" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                        <ArcSegment Point="0, 150" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                        <ArcSegment Point="0, 0" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                    </PathFigure>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+
+    </Canvas>
 </Window>
