@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="DodajPesmu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -62,6 +66,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DodajPesmu.xaml.cs">
+      <DependentUpon>DodajPesmu.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -93,6 +100,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="guitar1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="x2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="max2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Classes\Classes.csproj">
+      <Project>{6784f33c-6052-46dc-8c1e-db442ec8915e}</Project>
+      <Name>Classes</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ccr.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ccr1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
