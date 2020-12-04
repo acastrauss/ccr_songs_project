@@ -105,6 +105,7 @@
     <Resource Include="guitar1.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="min.png" />
     <Resource Include="minimize.png" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +125,24 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ccr1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="min2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="min3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ccr31.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ccr41.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ccr51.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ccr61.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

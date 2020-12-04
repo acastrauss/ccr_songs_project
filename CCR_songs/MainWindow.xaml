@@ -11,9 +11,10 @@
     <Canvas Margin="0,0,0,21" Width="1096.429" Height="656.25">
         <Canvas.Resources>
             <DropShadowEffect x:Key="mouseOverShadow" Color="DarkGreen" Direction="330" Opacity="60"/>
+
         </Canvas.Resources>
 
-        <Path Stroke="#5b8778" StrokeThickness="2" Name="UIPath" Height="582.55" Stretch="Fill" Width="1046.76" Canvas.Top="26" RenderTransformOrigin="0.5,0.5" Canvas.Left="26.12" >
+        <Path Stroke="#212121" StrokeThickness="2" Name="UIPath" Height="582.55" Stretch="Fill" Width="1046.76" Canvas.Top="26" RenderTransformOrigin="0.5,0.5" Canvas.Left="26.12" >
             <Path.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -23,38 +24,24 @@
                 </TransformGroup>
             </Path.RenderTransform>
             <Path.Fill>
-                <ImageBrush ImageSource="ccr1.jpg"></ImageBrush>
+                <SolidColorBrush Color="#e3b686"></SolidColorBrush>
             </Path.Fill>
             <Path.Data>
                 <PathGeometry >
-                    <PathFigure StartPoint="0,0">
-                        <ArcSegment Point="150, 0" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
-                        <ArcSegment Point="300, 0" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
-                        <ArcSegment Point="450, 0" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
-                        <ArcSegment Point="600, 0" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
-                        <ArcSegment Point="750, 0" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
-                        <ArcSegment Point="900, 0" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
-                        <ArcSegment Point="1050, 0" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
-                        <ArcSegment Point="1050, 150" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
-                        <ArcSegment Point="1050, 300" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
-                        <ArcSegment Point="1050, 450" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
-                        <ArcSegment Point="1050, 600" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
-                        <ArcSegment Point="900, 600" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
-                        <ArcSegment Point="750, 600" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
-                        <ArcSegment Point="600, 600" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
-                        <ArcSegment Point="450, 600" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
-                        <ArcSegment Point="300, 600" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
-                        <ArcSegment Point="150, 600" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
-                        <ArcSegment Point="0, 600" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
-                        <ArcSegment Point="0, 450" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
-                        <ArcSegment Point="0, 300" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
-                        <ArcSegment Point="0, 150" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
-                        <ArcSegment Point="0, 0" Size="50, 50" RotationAngle="180" IsLargeArc="False" SweepDirection="Clockwise"></ArcSegment>
+                    <PathFigure StartPoint="0, 50">
+                        <ArcSegment Point="50, 0" Size="50, 50" RotationAngle="90" IsLargeArc="False" SweepDirection="Clockwise"/>
+                        <LineSegment Point="1046.429, 0"/>
+                        <ArcSegment Point="1096.429, 50" Size="50, 50" RotationAngle="90" IsLargeArc="False" SweepDirection="Clockwise"/>
+                        <LineSegment Point="1096.429, 606.25"/>
+                        <ArcSegment Point="1046.429, 656.25" Size="50, 50" RotationAngle="90" IsLargeArc="False" SweepDirection="Clockwise"/>
+                        <LineSegment Point="50, 656.25"/>
+                        <ArcSegment Point="0, 606.25" Size="50, 50" RotationAngle="90" IsLargeArc="False" SweepDirection="Clockwise"/>
+                        <LineSegment Point="0, 50"/>
                     </PathFigure>
                 </PathGeometry>
             </Path.Data>
         </Path>
-        <Button x:Name="xButton" Width="51" Height="34" Canvas.Left="935" Canvas.Top="48" Click="xButton_Click" ClickMode="Press">
+        <Button x:Name="xButton" Width="51" Height="34" Canvas.Left="994" Canvas.Top="48" Click="xButton_Click" ClickMode="Press">
             <Image Source="x2.png" Height="25" Width="33" RenderTransformOrigin="1.395,0.574"></Image>
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
@@ -73,8 +60,8 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="minButton" Canvas.Left="890" Canvas.Top="48" Width="45" Height="34" Click="minButton_Click">
-            <Image Source="minimize.png" Height="27" Width="35" ></Image>
+        <Button x:Name="minButton" Canvas.Left="944" Canvas.Top="48" Width="45" Height="34" Click="minButton_Click">
+            <Image Source="min3.png" Height="29" Width="35" ></Image>
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Grid>
@@ -92,16 +79,22 @@
                 </Style>
             </Button.Style>
         </Button>
-        <DataGrid x:Name="dataGridPesme" ItemsSource="{Binding Pesme}" Height="267" 
-                  Canvas.Left="114" Canvas.Top="271" Width="750" SelectionMode="Single"
-                  IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left"
-                  VerticalAlignment="Top" Background="#5b8778">
+        <Button x:Name="dodajButton" Content="Dodajte novu pesmu" Canvas.Left="114" Canvas.Top="530" Width="147" Height="48" Background="#8f4a00" FontSize="14" FontWeight="Bold" 
+                Click="dodajButton_Click" Foreground="#f7d7b5">
+
+        </Button>
+        <Image x:Name="image" Height="178" Canvas.Left="561" Width="402" Source="ccr31.png" Canvas.Top="45"/>
+        <DataGrid x:Name="dataGridPesme" ItemsSource="{Binding Pesme}" Height="297" 
+            Canvas.Left="114" Canvas.Top="228" Width="825" SelectionMode="Single"
+            IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left"
+            VerticalAlignment="Top" Background="#faeee3" BorderBrush="#212121" BorderThickness="2" >
             <DataGrid.Resources>
                 <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
-                    <Setter Property="Background" Value="#5b8778" />
-                    <Setter Property="BorderBrush" Value="Black"/>
-                    <Setter Property="BorderThickness" Value="2"/>
+                    <Setter Property="Background" Value="#faeee3" />
+                    <Setter Property="BorderBrush" Value="#212121"/>
+                    <Setter Property="BorderThickness" Value="1"/>
                     <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Foreground" Value="#363535"/>
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
@@ -113,24 +106,18 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTextColumn Header="Naziv Pesme" Binding="{Binding Naziv_pesme}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Datum Objave" Binding="{Binding Datum_objave}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Broj Pregleda" Binding="{Binding Br_pregleda}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Naziv Pesme" Binding="{Binding Naziv_pesme}"/>
+                <DataGridTextColumn Header="Datum Objave" Binding="{Binding Datum_objave}"/>
+                <DataGridTextColumn Header="Broj Pregleda" Binding="{Binding Br_pregleda}"/>
 
                 <DataGridTemplateColumn Header=""  Width="*">
                     <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                        </DataTemplate>
+                        <DataTemplate/>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
             </DataGrid.Columns>
         </DataGrid>
-        <Label x:Name="label" Canvas.Left="114" Content="Creedence Clearwater Revival Diskografija" FontSize="35" FontFamily="Quire Sans" Foreground="#86dbbf" FontStyle="Italic" FontWeight="ExtraBold" Canvas.Top="92" Height="50" Width="750">
-        </Label>
-        <Button x:Name="dodajButton" Content="Dodajte novu pesmu" Canvas.Left="114" Canvas.Top="206" Width="147" Height="48" Background="#5b8778" FontSize="14" FontWeight="Bold" 
-                Click="dodajButton_Click">
-
-        </Button>
+        <Label x:Name="label" Canvas.Left="114" Content="Creedence Clearwater Revival&#xD;&#xA;Diskografija" FontSize="34" FontFamily="Quire Sans" Foreground="#8f4a00" FontStyle="Italic" FontWeight="ExtraBold" Canvas.Top="48" Height="100" Width="512"/>
     </Canvas>
 </Window>

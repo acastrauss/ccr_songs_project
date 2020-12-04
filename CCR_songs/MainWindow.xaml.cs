@@ -58,5 +58,7 @@ namespace CCR_songs
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
+
+        
     }
 }
