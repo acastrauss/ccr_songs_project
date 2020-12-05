@@ -27,6 +27,7 @@ namespace CCR_songs
 
         public MainWindow()
         {
+
             Pesme = serializer.DeSerializeObject<BindingList<Song>>("pesme.xml");
             if (Pesme == null) //U slucaju da nista nije ucitano
             {

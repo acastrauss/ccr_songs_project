@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace Classes
 {
@@ -14,7 +15,7 @@ namespace Classes
         private int br_pregleda;
         private string naziv_pesme;
         private DateTime datum_objave;
-        private Bitmap cover_image;
+        private BitmapImage cover_image;
         private string rtf_file;
 
         public Song()
@@ -23,7 +24,7 @@ namespace Classes
             this.naziv_pesme = "";
         }
 
-        public Song(int br_pregleda, string naziv_pesme, DateTime datum_objave, Bitmap cover_image, string rtf_file)
+        public Song(int br_pregleda, string naziv_pesme, DateTime datum_objave, BitmapImage cover_image, string rtf_file)
         {
             this.br_pregleda = br_pregleda;
             this.naziv_pesme = naziv_pesme;
@@ -36,7 +37,7 @@ namespace Classes
         public int Br_pregleda { get => br_pregleda; set => br_pregleda = value; }
         public string Naziv_pesme { get => naziv_pesme; set => naziv_pesme = value; }
         public DateTime Datum_objave { get => datum_objave; set => datum_objave = value; }
-        public Bitmap Cover_image { get => cover_image; set => cover_image = value; }
+        public BitmapImage Cover_image { get => cover_image; set => cover_image = value; }
         public string Rtf_file { get => rtf_file; set => rtf_file = value; }
     }
 }

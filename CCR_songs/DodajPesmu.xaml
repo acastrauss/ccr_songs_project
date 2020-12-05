@@ -42,11 +42,50 @@
                 </PathGeometry>
             </Path.Data>
         </Path>
-        <TextBox x:Name="textBox" Height="47" Canvas.Left="69" TextWrapping="Wrap" Text="" Canvas.Top="98" Width="327" Background="#faeee3"/>
+        <Button x:Name="xButton" Width="51" Height="34" Canvas.Left="994" Canvas.Top="48" Click="xButton_Click" ClickMode="Press">
+            <Image Source="x2.png" Height="25" Width="33" RenderTransformOrigin="1.395,0.574"></Image>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Effect" Value="{StaticResource mouseOverShadow}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button x:Name="minButton" Canvas.Left="944" Canvas.Top="48" Width="45" Height="34" Click="minButton_Click">
+            <Image Source="min3.png" Height="29" Width="35" ></Image>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Effect" Value="{StaticResource mouseOverShadow}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <TextBox x:Name="textBoxNaziv" Height="47" Canvas.Left="69" TextWrapping="Wrap" Text="" Canvas.Top="98" Width="327" Background="#faeee3" FontSize="15"/>
         <Label x:Name="label" Content="Naziv pesme:" FontSize="20" Canvas.Left="69" Canvas.Top="53" Width="139" Height="40"/>
-        <TextBox x:Name="textBox1" Height="47" Canvas.Left="69" TextWrapping="Wrap" Text="" Canvas.Top="215" Width="327" Background="#faeee3"/>
+        <TextBox x:Name="textBoxPregledi" Height="47" Canvas.Left="69" TextWrapping="Wrap" Text="" Canvas.Top="215" Width="327" Background="#faeee3" FontSize="15"/>
         <Label x:Name="label1" Content="Broj pregleda:" Canvas.Left="69" FontSize="20" Canvas.Top="170" Width="193" Height="40"/>
-        <DatePicker Canvas.Left="69" Canvas.Top="333" Height="26" Width="193">
+        <DatePicker x:Name="dateDatumObjave" Canvas.Left="86" Canvas.Top="333" Height="26" Width="193">
             <DatePicker.Resources>
                 <Style TargetType="DatePickerTextBox">
                     <Setter Property="Text" Value=" "/>
@@ -55,31 +94,60 @@
             </DatePicker.Resources>
         </DatePicker>
         <Label x:Name="label2" Content="Datum objave:" Canvas.Left="69" FontSize="20" Canvas.Top="288" RenderTransformOrigin="-1.711,1.346" Width="193" Height="40"/>
-        <Button x:Name="button" Content="Izaberite sliku" FontSize="20" Canvas.Left="489" Canvas.Top="98" Width="139" Height="47" Background="#8f4a00" />
-        <Border BorderBrush="#212121" BorderThickness="1" Height="164" Canvas.Left="676" Canvas.Top="98" Width="312">
-            <Image x:Name="image" Margin="-1,1,1,-1"/>
+        <Button x:Name="buttonSlika" Content="Izaberite sliku" FontSize="20" Canvas.Left="489" Canvas.Top="98" Width="139" Height="47" Background="#8f4a00" Foreground="#f7d7b5" Click="buttonSlika_Click"/>
+        <Border x:Name="imageBorder" BorderBrush="#212121" BorderThickness="1" Height="164" Canvas.Left="673" Canvas.Top="98" Width="315">
+            <Image x:Name="image" Margin="-1,1,-1,-1" Stretch="Fill" VerticalAlignment="Top"/>
 
         </Border>
-        <RichTextBox x:Name="richTextBox" Height="239" Canvas.Left="489" Canvas.Top="333" Width="499">
+        <RichTextBox x:Name="richTextBox" Height="239" Canvas.Left="489" Canvas.Top="333" Width="499" MouseLeftButtonDown="richTextBox_MouseLeftButtonDown" >
             <FlowDocument>
                 <Paragraph>
-                    <Run Text="RichTextBox"/>
+                    <Run Text="Unesite tekst pesme" Foreground="Gray"/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <DockPanel Height="40" LastChildFill="False" Canvas.Left="489" Canvas.Top="288" Width="299" HorizontalAlignment="Left">
-            <ToolBar x:Name="toolBar" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Left" Margin="100,0,10,0" Width="147">
-                <ToggleButton Name="btnBold" Content="B" FontWeight="Bold" FontSize="20">
+        <DockPanel Height="40" LastChildFill="True" Canvas.Left="386" Canvas.Top="288" Width="602" HorizontalAlignment="Left">
+            <ToolBar x:Name="toolBar" Height="40" VerticalAlignment="Center" HorizontalAlignment="Left" DockPanel.Dock="Left" Margin="100,0,10,0" Width="350" Background="#faeee3">
+                <ToggleButton x:Name="btnBold" Content="B" FontWeight="Bold" FontSize="20">
                 </ToggleButton>
                 <Separator/>
-                <ToggleButton Name="btnItalic" Content="I" FontStyle="Italic"  FontSize="20">
+                <ToggleButton x:Name="btnItalic" Content="I" FontStyle="Italic"  FontSize="20">
                 </ToggleButton>
                 <Separator/>
-                <ToggleButton Name="btnUnderline" Content="U"  FontSize="20">
+                <ToggleButton x:Name="btnUnderline" Content="U"  FontSize="20">
                 </ToggleButton>
+                <Separator/>
+                <ComboBox Name="comboSize" Canvas.Left="413" Canvas.Top="444" Margin="0,8,0,5" Width="105"
+                          IsEditable="True" IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Fill="{Binding Name}" Width="16" Height="16" Margin="0,2,5,2" />
+                                <TextBlock Text="{Binding Name}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Separator/>
+                <ComboBox Name="comboColors" Canvas.Left="413" Canvas.Top="444" Margin="0,8,0,7" Width="105"
+                          IsEditable="True" IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False" >
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Fill="{Binding Name}" Width="16" Height="16" Margin="0,2,5,2" />
+                                <TextBlock Text="{Binding Name}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
 
             </ToolBar>
         </DockPanel>
-
+        <Button x:Name="buttonDodajte" Content="Dodajte pesmu" Canvas.Left="310" Canvas.Top="525" Width="142" Height="47" Background="#8f4a00" FontSize="20" Foreground="#f7d7b5" Click="buttonDodajte_Click"/>
+        <Label x:Name="labelNazivGreska" Content="" Canvas.Left="203" Canvas.Top="58" Width="193" Height="40" FontSize="15" Foreground="Red"/>
+        <Label x:Name="labelPreglediGreska" Content="" Canvas.Left="203" Canvas.Top="175" Width="193" Height="40" FontSize="15" Foreground="Red"/>
+        <Label x:Name="labelDatumGreska" Content="" Canvas.Left="203" Canvas.Top="293" Width="193" Height="40" FontSize="15" Foreground="Red"/>
+        <Label x:Name="labelSlikaGreska" Content="" Canvas.Left="489" Canvas.Top="170" Width="153" Height="40" FontSize="15" Foreground="Red"/>
+        <Label x:Name="labelTekstGreska" Content="" Canvas.Left="489" Canvas.Top="577" Width="241" FontSize="15" Foreground="Red"/>
     </Canvas>
 </Window>
