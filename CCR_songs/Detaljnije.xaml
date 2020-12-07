@@ -1,0 +1,94 @@
+﻿<Window x:Class="CCR_songs.Detaljnije"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CCR_songs"
+        mc:Ignorable="d"
+        Title="Detaljnije"  Width="1096.429" Height="656.25"
+        SizeToContent="WidthAndHeight"  WindowStyle="None"
+        AllowsTransparency="True" Background="Transparent" MouseDown="Window_MouseDown">
+    <Canvas Margin="6,-12,-7,44" Width="1096.429" Height="656.25">
+        <Canvas.Resources>
+            <DropShadowEffect x:Key="mouseOverShadow" Color="DarkGreen" Direction="330" Opacity="60"/>
+        </Canvas.Resources>
+
+        <Path Stroke="#212121" StrokeThickness="2" Name="UIPath" Height="593.232" Stretch="Fill" Width="1046.76" Canvas.Top="26.653" RenderTransformOrigin="0.5,0.5" Canvas.Left="18.12" >
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-0.109"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-0.572"/>
+                </TransformGroup>
+            </Path.RenderTransform>
+            <Path.Fill>
+                <SolidColorBrush Color="#e3b686"></SolidColorBrush>
+            </Path.Fill>
+            <Path.Data>
+                <PathGeometry >
+                    <PathFigure StartPoint="0,50">
+
+                        <ArcSegment Point="50, 0" Size="50, 50" RotationAngle="90" IsLargeArc="False" SweepDirection="Clockwise"/>
+                        <LineSegment Point="1046.429, 0"/>
+                        <ArcSegment Point="1096.429, 50" Size="50, 50" RotationAngle="90" IsLargeArc="False" SweepDirection="Clockwise"/>
+                        <LineSegment Point="1096.429, 606.25"/>
+                        <ArcSegment Point="1046.429, 656.25" Size="50, 50" RotationAngle="90" IsLargeArc="False" SweepDirection="Clockwise"/>
+                        <LineSegment Point="50, 656.25"/>
+                        <ArcSegment Point="0, 606.25" Size="50, 50" RotationAngle="90" IsLargeArc="False" SweepDirection="Clockwise"/>
+                        <LineSegment Point="0, 50"/>
+                    </PathFigure>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+        <Button x:Name="xButton" Width="51" Height="34" Canvas.Left="994" Canvas.Top="48" Click="xButton_Click" ClickMode="Press">
+            <Image Source="x2.png" Height="25" Width="33" RenderTransformOrigin="1.395,0.574"></Image>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Effect" Value="{StaticResource mouseOverShadow}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button x:Name="minButton" Canvas.Left="944" Canvas.Top="48" Width="45" Height="34" Click="minButton_Click">
+            <Image Source="min3.png" Height="29" Width="35" ></Image>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Effect" Value="{StaticResource mouseOverShadow}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Label x:Name="labelPregledi" Content="Broj pregleda:" Canvas.Left="69" FontSize="20" Canvas.Top="350" Width="398" Height="40"/>
+        <Border x:Name="imageBorder" BorderBrush="#212121" BorderThickness="1" Height="188" Canvas.Left="69" Canvas.Top="138" Width="398">
+            <Image x:Name="image" Margin="-1,1,-1,-1" Stretch="Fill" VerticalAlignment="Top"/>
+
+        </Border>
+        <RichTextBox x:Name="richTextBox" Height="439" Canvas.Left="490" Canvas.Top="138" Width="499" >
+        </RichTextBox>
+        <Label x:Name="labelTekst" Content="Tekst pesme:" Canvas.Left="489" Canvas.Top="86" Height="47" Width="282" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20"/>
+        <Label x:Name="labelNaslov" Content="" Canvas.Left="69" Canvas.Top="86" Height="47" Width="398" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20"
+               FontWeight="Bold" FontStyle="Italic"/>
+        <Label x:Name="labelDatum" Content="Datum objave:" Canvas.Left="69" FontSize="20" Canvas.Top="390" Width="398" Height="40"/>
+    </Canvas>
+</Window>

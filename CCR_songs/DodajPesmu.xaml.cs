@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -17,6 +16,8 @@ using System.Windows.Shapes;
 using System.Drawing;
 using Brushes = System.Windows.Media.Brushes;
 using System.Text.RegularExpressions;
+using System.IO;
+using System.Windows.Controls;
 
 namespace CCR_songs
 {
@@ -35,10 +36,19 @@ namespace CCR_songs
 
         public System.Windows.Forms.DrawMode DrawMode { get; set; }
 
-        public DodajPesmu()
+        public DodajPesmu(Classes.Song s)
         {
             InitializeComponent();
+
+            if (s != null) 
+            {
+                textBoxNaziv.Text = s.Naziv_pesme;
+                image.Source = s.Cover_image;
+                textBoxPregledi.Text = s.Br_pregleda.ToString();
+                dateDatumObjave.Text = s.Datum_objave.ToShortDateString();
             
+            }
+
             comboColors.ItemsSource = typeof(Colors).GetProperties();
 
             comboFontStyles.ItemsSource = Fonts.SystemFontFamilies;
@@ -98,7 +108,7 @@ namespace CCR_songs
 
             int garbage;
             DateTime garb;
-            RichTextBox rtb = richTextBox;
+            System.Windows.Controls.RichTextBox rtb = richTextBox;
             string rtb_text = new TextRange(rtb.Document.ContentStart, rtb.Document.ContentEnd).Text.Trim();
 
             textBoxNaziv.BorderThickness = new Thickness(1);
@@ -181,6 +191,12 @@ namespace CCR_songs
                 Song nova = new Song(Int32.Parse(textBoxPregledi.Text.Trim()), textBoxNaziv.Text.Trim(), DateTime.Parse(dateDatumObjave.Text.Trim()), (BitmapImage)image.Source, textBoxNaziv.Text.Trim() + ".rtf");
                 MainWindow.Pesme.Add(nova);
                 labelDodato.Content = "Dodali ste pesmu!";
+
+                string filename = textBoxNaziv.Text.Trim() + ".rtf";
+
+                FileStream fs = new FileStream(filename, FileMode.OpenOrCreate);
+                TextRange txt = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
+                txt.Save(fs, System.Windows.DataFormats.Rtf);
             }
         }
 
@@ -305,15 +321,15 @@ namespace CCR_songs
             image.Source = null;
             richTextBox.Document.Blocks.Clear();
 
-            textBoxNaziv.ClearValue(TextBox.BorderBrushProperty);
-            textBoxPregledi.ClearValue(TextBox.BorderBrushProperty);
+            textBoxNaziv.ClearValue(System.Windows.Controls.TextBox.BorderBrushProperty);
+            textBoxPregledi.ClearValue(System.Windows.Controls.TextBox.BorderBrushProperty);
             dateDatumObjave.ClearValue(DatePicker.BorderBrushProperty);
 
             var converter = new System.Windows.Media.BrushConverter();
             var brush = (System.Windows.Media.Brush)converter.ConvertFromString("#212121");
             imageBorder.BorderBrush = brush;
 
-            richTextBox.ClearValue(RichTextBox.BorderBrushProperty);
+            richTextBox.ClearValue(System.Windows.Controls.RichTextBox.BorderBrushProperty);
             labelDodato.Content = "";
             labelNazivGreska.Content = "";
             labelPreglediGreska.Content = "";

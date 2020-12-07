@@ -50,7 +50,7 @@ namespace CCR_songs
 
         private void dodajButton_Click(object sender, RoutedEventArgs e)
         {
-            DodajPesmu dodajPesmu = new DodajPesmu();
+            DodajPesmu dodajPesmu = new DodajPesmu(null);
             dodajPesmu.Show();
         }
 
@@ -60,6 +60,23 @@ namespace CCR_songs
                 this.DragMove();
         }
 
-        
+        private void buttonIzbrisi_Click(object sender, RoutedEventArgs e)
+        {
+            Pesme.Remove((Classes.Song)dataGridPesme.SelectedItem);
+            dataGridPesme.Items.Refresh();
+        }
+
+        private void buttonDetaljnije_Click(object sender, RoutedEventArgs e)
+        {
+            Detaljnije win_det =  new Detaljnije(((Classes.Song)dataGridPesme.SelectedItem));
+            win_det.Show();
+        }
+
+        private void buttonIzmeni_Click(object sender, RoutedEventArgs e)
+        {
+
+            DodajPesmu dodajPesmu = new DodajPesmu(((Classes.Song)dataGridPesme.SelectedItem));
+            dodajPesmu.Show();
+        }
     }
 }

@@ -18,3 +18,5 @@ C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\predmetni_zadatak\CC
 C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\predmetni_zadatak\CCR_songs\ccr_songs_project\CCR_songs\obj\Debug\CCR_songs.csproj.CopyComplete
 C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\predmetni_zadatak\CCR_songs\ccr_songs_project\CCR_songs\obj\Debug\DodajPesmu.g.cs
 C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\predmetni_zadatak\CCR_songs\ccr_songs_project\CCR_songs\obj\Debug\DodajPesmu.baml
+C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\predmetni_zadatak\CCR_songs\ccr_songs_project\CCR_songs\obj\Debug\Detaljnije.g.cs
+C:\Users\acast\Desktop\treca_godina_prvi_semestar\hci\vezbe\predmetni_zadatak\CCR_songs\ccr_songs_project\CCR_songs\obj\Debug\Detaljnije.baml
