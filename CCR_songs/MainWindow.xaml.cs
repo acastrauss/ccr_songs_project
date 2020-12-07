@@ -51,7 +51,7 @@ namespace CCR_songs
         private void dodajButton_Click(object sender, RoutedEventArgs e)
         {
             DodajPesmu dodajPesmu = new DodajPesmu();
-            dodajPesmu.ShowDialog();
+            dodajPesmu.Show();
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

@@ -99,48 +99,45 @@
             <Image x:Name="image" Margin="-1,1,-1,-1" Stretch="Fill" VerticalAlignment="Top"/>
 
         </Border>
-        <RichTextBox x:Name="richTextBox" Height="239" Canvas.Left="489" Canvas.Top="333" Width="499" MouseLeftButtonDown="richTextBox_MouseLeftButtonDown" >
+        <RichTextBox x:Name="richTextBox" Height="239" Canvas.Left="489" Canvas.Top="333" Width="499" SelectionChanged="richTextBox_SelectionChanged" PreviewMouseDown="richTextBox_PreviewMouseDown" TextChanged="richTextBox_TextChanged">
             <FlowDocument>
                 <Paragraph>
-                    <Run Text="Unesite tekst pesme" Foreground="Gray"/>
+                    <Run Foreground="Gray" Text="Unesite tekst pesme"/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <DockPanel Height="40" LastChildFill="True" Canvas.Left="386" Canvas.Top="288" Width="602" HorizontalAlignment="Left">
-            <ToolBar x:Name="toolBar" Height="40" VerticalAlignment="Center" HorizontalAlignment="Left" DockPanel.Dock="Left" Margin="100,0,10,0" Width="350" Background="#faeee3">
-                <ToggleButton x:Name="btnBold" Content="B" FontWeight="Bold" FontSize="20">
+        <DockPanel Height="40" LastChildFill="True" Canvas.Left="386" Canvas.Top="288" Width="622" HorizontalAlignment="Left">
+            <ToolBar x:Name="toolBar" Height="40" VerticalAlignment="Center" HorizontalAlignment="Left" DockPanel.Dock="Left" Margin="100,0,10,0" Width="502" Background="#faeee3">
+                <ToggleButton x:Name="btnBold" Content="B" FontWeight="Bold" FontSize="20" Margin="0,1" VerticalAlignment="Stretch" Command="EditingCommands.ToggleBold">
                 </ToggleButton>
                 <Separator/>
-                <ToggleButton x:Name="btnItalic" Content="I" FontStyle="Italic"  FontSize="20">
+                <ToggleButton x:Name="btnItalic" Content="I" FontStyle="Italic"  FontSize="20" Command="EditingCommands.ToggleItalic">
                 </ToggleButton>
                 <Separator/>
-                <ToggleButton x:Name="btnUnderline" Content="U"  FontSize="20">
+                <ToggleButton x:Name="btnUnderline" Content="U"  FontSize="20" Command="EditingCommands.ToggleUnderline" >
                 </ToggleButton>
                 <Separator/>
-                <ComboBox Name="comboSize" Canvas.Left="413" Canvas.Top="444" Margin="0,8,0,5" Width="105"
-                          IsEditable="True" IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Rectangle Fill="{Binding Name}" Width="16" Height="16" Margin="0,2,5,2" />
-                                <TextBlock Text="{Binding Name}" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-                <Separator/>
-                <ComboBox Name="comboColors" Canvas.Left="413" Canvas.Top="444" Margin="0,8,0,7" Width="105"
-                          IsEditable="True" IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False" >
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Rectangle Fill="{Binding Name}" Width="16" Height="16" Margin="0,2,5,2" />
-                                <TextBlock Text="{Binding Name}" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
+                <ComboBox Name="comboSize" Canvas.Left="413" Canvas.Top="444" Margin="0,8,0,5" Width="105" SelectionChanged="comboSize_SelectionChanged">
 
+                </ComboBox>
+                <Separator/>
+                <ComboBox Name="comboColors" RenderTransformOrigin="-3.312,-0.975" Width="150" SelectionChanged="comboColors_SelectionChanged" >
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Grid Loaded="table_Loaded" />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Fill="{Binding Name}" Width="16" Height="16" Margin="0 2 5 2" />
+                                <TextBlock Text="{Binding Name}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Separator/>
+                <ComboBox x:Name="comboFontStyles" Height="20" Margin="0,10,0,0" VerticalAlignment="Top" Width="140" SelectionChanged="comboFontStyles_SelectionChanged"/>
             </ToolBar>
         </DockPanel>
         <Button x:Name="buttonDodajte" Content="Dodajte pesmu" Canvas.Left="310" Canvas.Top="525" Width="142" Height="47" Background="#8f4a00" FontSize="20" Foreground="#f7d7b5" Click="buttonDodajte_Click"/>
@@ -149,5 +146,8 @@
         <Label x:Name="labelDatumGreska" Content="" Canvas.Left="203" Canvas.Top="293" Width="193" Height="40" FontSize="15" Foreground="Red"/>
         <Label x:Name="labelSlikaGreska" Content="" Canvas.Left="489" Canvas.Top="170" Width="153" Height="40" FontSize="15" Foreground="Red"/>
         <Label x:Name="labelTekstGreska" Content="" Canvas.Left="489" Canvas.Top="577" Width="241" FontSize="15" Foreground="Red"/>
+        <TextBox x:Name="textBoxBrReci" Height="23" TextWrapping="Wrap" Text="Broj reci: 0" Width="120" Canvas.Left="868" Canvas.Top="572"/>
+        <Label x:Name="labelDodato" Content="" Canvas.Left="310" Canvas.Top="577" Width="142" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Green" FontSize="15"/>
+        <Button x:Name="buttonIsprazni" Content="Ispraznite sva&#xA;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;polja" Canvas.Left="86" Canvas.Top="525" Width="142" Height="47" Background="#8f4a00" FontSize="15" Foreground="#f7d7b5" Click="buttonIsprazni_Click"/>
     </Canvas>
 </Window>

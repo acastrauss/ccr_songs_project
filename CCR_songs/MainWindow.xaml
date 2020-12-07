@@ -85,7 +85,7 @@
         </Button>
         <Image x:Name="image" Height="178" Canvas.Left="561" Width="402" Source="ccr31.png" Canvas.Top="45"/>
         <DataGrid x:Name="dataGridPesme" ItemsSource="{Binding Pesme}" Height="297" 
-            Canvas.Left="114" Canvas.Top="228" Width="825" SelectionMode="Single"
+            Canvas.Left="114" Canvas.Top="228" Width="849" SelectionMode="Single"
             IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left"
             VerticalAlignment="Top" Background="#faeee3" BorderBrush="#212121" BorderThickness="2" >
             <DataGrid.Resources>
@@ -98,17 +98,40 @@
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Slika">
-                    <DataGridTemplateColumn.CellTemplate>
+                <DataGridTemplateColumn Header="Slika" MaxWidth="150" Width="150">
+                   <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Image Source="{Binding Cover_image}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTextColumn Header="Naziv Pesme" Binding="{Binding Naziv_pesme}"/>
-                <DataGridTextColumn Header="Datum Objave" Binding="{Binding Datum_objave}"/>
-                <DataGridTextColumn Header="Broj Pregleda" Binding="{Binding Br_pregleda}"/>
+                <DataGridTextColumn Header="Naziv Pesme" Binding="{Binding Naziv_pesme}" MinWidth="150" MaxWidth="200">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                        </Style>
+                        
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Datum Objave" Binding="{Binding Samo_datum}" MinWidth="150" MaxWidth="200" >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Broj Pregleda" Binding="{Binding Br_pregleda}" MinWidth="150" MaxWidth="200">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
 
                 <DataGridTemplateColumn Header=""  Width="*">
                     <DataGridTemplateColumn.CellTemplate>

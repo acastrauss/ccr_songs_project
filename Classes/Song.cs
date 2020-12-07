@@ -15,6 +15,7 @@ namespace Classes
         private int br_pregleda;
         private string naziv_pesme;
         private DateTime datum_objave;
+        private DateTime samo_datum;
         private BitmapImage cover_image;
         private string rtf_file;
 
@@ -22,6 +23,7 @@ namespace Classes
         {
             this.br_pregleda = 0;
             this.naziv_pesme = "";
+            
         }
 
         public Song(int br_pregleda, string naziv_pesme, DateTime datum_objave, BitmapImage cover_image, string rtf_file)
@@ -31,7 +33,7 @@ namespace Classes
             this.datum_objave = datum_objave;
             this.cover_image = cover_image;
             this.rtf_file = rtf_file;
-            
+            this.samo_datum = datum_objave.Date;
         }
 
         public int Br_pregleda { get => br_pregleda; set => br_pregleda = value; }
@@ -39,5 +41,6 @@ namespace Classes
         public DateTime Datum_objave { get => datum_objave; set => datum_objave = value; }
         public BitmapImage Cover_image { get => cover_image; set => cover_image = value; }
         public string Rtf_file { get => rtf_file; set => rtf_file = value; }
+        public DateTime Samo_datum { get => samo_datum; set => samo_datum = value; }
     }
 }

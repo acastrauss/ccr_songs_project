@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Drawing;
 using Brushes = System.Windows.Media.Brushes;
+using System.Text.RegularExpressions;
 
 namespace CCR_songs
 {
@@ -25,25 +26,27 @@ namespace CCR_songs
     public partial class DodajPesmu : Window
     {
 
-        //public static BindingList<int> font_sizes = new BindingList<int>() 
         
-        public static ObservableCollection<int> font_sizes = new ObservableCollection<int>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
-        public static ObservableCollection<int> Font_sizes { get; set; }
+        public static List<int> font_sizes = new List<int>() { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 };
+        public static List<int> Font_sizes { get; set; }
 
+        // for colors
+        private static readonly int COLUMS = 3;
+
+        public System.Windows.Forms.DrawMode DrawMode { get; set; }
 
         public DodajPesmu()
         {
             InitializeComponent();
+            
             comboColors.ItemsSource = typeof(Colors).GetProperties();
-            comboSize.ItemsSource = font_sizes;
 
-            /*
-            if (image.Source == null) 
-            {
-                textBoxNaziv.Text = "aaaaaaaaa";
-            }
-            // za proveru
-            */
+            comboFontStyles.ItemsSource = Fonts.SystemFontFamilies;
+
+            comboSize.ItemsSource = font_sizes;
+            comboSize.SelectedItem = font_sizes[4]; // 12 font size
+            
+            DataContext = this;
 
         }
 
@@ -80,7 +83,6 @@ namespace CCR_songs
             if (result == true)
             {
                 string filename = dlg.FileName;
-                textBoxNaziv.Text = filename;
                 
                 BitmapImage bimage = new BitmapImage();
                 bimage.BeginInit();
@@ -153,7 +155,7 @@ namespace CCR_songs
             else 
             {
                 labelSlikaGreska.Content = "";
-
+                richTextBox.BorderBrush = Brushes.Green;
             }
 
             if (rtb_text == "" || rtb_text == "Unesite tekst pesme") 
@@ -166,6 +168,7 @@ namespace CCR_songs
             else 
             {
                 labelTekstGreska.Content = "";
+                richTextBox.BorderBrush = Brushes.Green;
             }
 
             return result;
@@ -177,22 +180,146 @@ namespace CCR_songs
             {
                 Song nova = new Song(Int32.Parse(textBoxPregledi.Text.Trim()), textBoxNaziv.Text.Trim(), DateTime.Parse(dateDatumObjave.Text.Trim()), (BitmapImage)image.Source, textBoxNaziv.Text.Trim() + ".rtf");
                 MainWindow.Pesme.Add(nova);
+                labelDodato.Content = "Dodali ste pesmu!";
             }
         }
 
-        private void richTextBox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+
+        private void richTextBox_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            
+            // bold
+            object temp = richTextBox.Selection.GetPropertyValue(Inline.FontWeightProperty);
+            btnBold.IsChecked = (temp != DependencyProperty.UnsetValue) && (temp.Equals(FontWeights.Bold));
 
-            textBoxNaziv.Text = "asadasdsdad";
-            /*
-            richTextBox.Document.Blocks.Clear();
+            // italic
+            object temp2 = richTextBox.Selection.GetPropertyValue(Inline.FontStyleProperty);
+            btnItalic.IsChecked = (temp2 != DependencyProperty.UnsetValue) && (temp2.Equals(FontStyles.Italic));
 
-            richTextBox.Document.Blocks.Add(new Paragraph(new Run("")));
-            */
-            //var rtb_text = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
-            //rtb_text.Text = "";
+            // underline
+            object temp3 = richTextBox.Selection.GetPropertyValue(Inline.TextDecorationsProperty);
+            btnUnderline.IsChecked = (temp3 != DependencyProperty.UnsetValue) && (temp3.Equals(TextDecorations.Underline));
+
+            // font size
+            //object temp4 = richTextBox.Selection.GetPropertyValue(Inline.FontSizeProperty);
+            if (comboSize.SelectedItem != null)
+            {
+                richTextBox.Selection.ApplyPropertyValue(Inline.FontSizeProperty, comboSize.SelectedItem.ToString());
+            }
+
+            if (comboColors.SelectedItem != null) 
+            {
+                //richTextBox.Selection.ApplyPropertyValue(Inline.)
+                richTextBox.Selection.ApplyPropertyValue(Inline.ForegroundProperty, comboColors.SelectedItem.ToString().Split(' ')[1]);
+                //richTextBox.SelectionBrush = comboColors.SelectedItem.ToString().Split(' ')[1];
+               
+            }
+
         }
 
+        private void richTextBox_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            string rtb_text = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd).Text.Trim();
+
+            if (rtb_text == "Unesite tekst pesme")
+                richTextBox.Document.Blocks.Clear();
+        }
+
+
+        private void table_Loaded(object sender, RoutedEventArgs e)
+        {
+            Grid grid = (Grid)sender;
+            if (grid != null)
+            {
+                if (grid.RowDefinitions.Count == 0)
+                {
+                    for (int r = 0; r <= comboColors.Items.Count / COLUMS; r++)
+                    {
+                        grid.RowDefinitions.Add(new RowDefinition());
+                    }
+                }
+                if (grid.ColumnDefinitions.Count == 0)
+                {
+                    for (int c = 0; c < Math.Min(comboColors.Items.Count, COLUMS); c++)
+                    {
+                        grid.ColumnDefinitions.Add(new ColumnDefinition());
+                    }
+                }
+                for (int i = 0; i < grid.Children.Count; i++)
+                {
+                    Grid.SetColumn(grid.Children[i], i % COLUMS);
+                    Grid.SetRow(grid.Children[i], i / COLUMS);
+                }
+            }
+        }
+
+        private void comboSize_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (comboSize.SelectedItem != null && richTextBox.Selection.Text != "") 
+            {
+                richTextBox.Selection.ApplyPropertyValue(Inline.FontSizeProperty, comboSize.SelectedItem.ToString());
+            }
+        }
+
+        private void comboColors_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (comboColors.SelectedItem != null && richTextBox.Selection.Text != "") 
+            {
+                richTextBox.Selection.ApplyPropertyValue(Inline.ForegroundProperty, comboColors.SelectedItem.ToString().Split(' ')[1]);
+            }
+        }
+
+        private void comboFontStyles_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (comboFontStyles.SelectedItem != null)
+            {
+                richTextBox.Selection.ApplyPropertyValue(Inline.FontFamilyProperty,
+               comboFontStyles.SelectedItem);
+            }
+        }
+
+        private void richTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string rtb_text = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd).Text.Trim();
+
+            Regex r = new Regex("^[`~!@#$%^&*()_+-={}\"|[\\];:/.,<>?]*$"); // vecina znakova interpunkcije
+
+            int count = 0;
+            foreach  (var word in rtb_text.Split(' ') )
+            {
+                if (!r.IsMatch(word))
+                    count++;
+            }
+
+            if (textBoxBrReci != null)
+            {
+                //MessageBox.Show(arr_str.ToString());
+                textBoxBrReci.Text = "Broj reci: " + count.ToString();
+            }
+        }
+
+        private void buttonIsprazni_Click(object sender, RoutedEventArgs e)
+        {
+            textBoxNaziv.Text = "";
+            textBoxPregledi.Text = "";
+            dateDatumObjave.Text = "";
+            image.Source = null;
+            richTextBox.Document.Blocks.Clear();
+
+            textBoxNaziv.ClearValue(TextBox.BorderBrushProperty);
+            textBoxPregledi.ClearValue(TextBox.BorderBrushProperty);
+            dateDatumObjave.ClearValue(DatePicker.BorderBrushProperty);
+
+            var converter = new System.Windows.Media.BrushConverter();
+            var brush = (System.Windows.Media.Brush)converter.ConvertFromString("#212121");
+            imageBorder.BorderBrush = brush;
+
+            richTextBox.ClearValue(RichTextBox.BorderBrushProperty);
+            labelDodato.Content = "";
+            labelNazivGreska.Content = "";
+            labelPreglediGreska.Content = "";
+            labelDatumGreska.Content = "";
+            labelSlikaGreska.Content = "";
+            labelTekstGreska.Content = "";
+        }
     }
 }
