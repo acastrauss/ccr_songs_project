@@ -76,7 +76,9 @@ namespace CCR_songs
         {
 
             DodajPesmu dodajPesmu = new DodajPesmu(((Classes.Song)dataGridPesme.SelectedItem));
-            dodajPesmu.Show();
+            dodajPesmu.ShowDialog();
+
+            dataGridPesme.Items.Refresh();
         }
     }
 }

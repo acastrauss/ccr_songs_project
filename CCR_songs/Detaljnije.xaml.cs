@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,13 @@ namespace CCR_songs
             image.Source = s.Cover_image;
             labelPregledi.Content += " " + s.Br_pregleda;
             labelDatum.Content += " " + s.Datum_objave.ToShortDateString();
+
+            // rtf 
+            string filename = labelNaslov.Content.ToString().Trim() + ".rtf";
+
+            FileStream fs = new FileStream(filename, FileMode.Open);
+            TextRange txt = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
+            txt.Load(fs, System.Windows.DataFormats.Rtf);
 
         }
 

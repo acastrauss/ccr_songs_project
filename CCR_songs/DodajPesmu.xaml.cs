@@ -33,6 +33,7 @@ namespace CCR_songs
 
         // for colors
         private static readonly int COLUMS = 3;
+        private readonly int song_indx = -1; // -1 je po defaultu ako je null song
 
         public System.Windows.Forms.DrawMode DrawMode { get; set; }
 
@@ -46,7 +47,15 @@ namespace CCR_songs
                 image.Source = s.Cover_image;
                 textBoxPregledi.Text = s.Br_pregleda.ToString();
                 dateDatumObjave.Text = s.Datum_objave.ToShortDateString();
-            
+                song_indx = MainWindow.Pesme.IndexOf(s);
+                buttonDodajte.Content = "Izmenite pesmu";
+
+                // rtf 
+                string filename = textBoxNaziv.Text.Trim() + ".rtf";
+
+                FileStream fs = new FileStream(filename, FileMode.Open);
+                TextRange txt = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
+                txt.Load(fs, System.Windows.DataFormats.Rtf);
             }
 
             comboColors.ItemsSource = typeof(Colors).GetProperties();
@@ -189,14 +198,30 @@ namespace CCR_songs
             if (validate()) 
             {
                 Song nova = new Song(Int32.Parse(textBoxPregledi.Text.Trim()), textBoxNaziv.Text.Trim(), DateTime.Parse(dateDatumObjave.Text.Trim()), (BitmapImage)image.Source, textBoxNaziv.Text.Trim() + ".rtf");
-                MainWindow.Pesme.Add(nova);
-                labelDodato.Content = "Dodali ste pesmu!";
+                
+                if (song_indx == -1) 
+                {
+                    MainWindow.Pesme.Add(nova);
+                    labelDodato.Content = "Dodali ste pesmu!";
 
-                string filename = textBoxNaziv.Text.Trim() + ".rtf";
+                    string filename = textBoxNaziv.Text.Trim() + ".rtf";
 
-                FileStream fs = new FileStream(filename, FileMode.OpenOrCreate);
-                TextRange txt = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
-                txt.Save(fs, System.Windows.DataFormats.Rtf);
+                    FileStream fs = new FileStream(filename, FileMode.OpenOrCreate);
+                    TextRange txt = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
+                    txt.Save(fs, System.Windows.DataFormats.Rtf);
+                    
+                }
+                else 
+                {
+                    MainWindow.Pesme[song_indx] = nova;
+                    labelDodato.Content = "Izmenili ste pesmu!";
+
+                    string filename = textBoxNaziv.Text.Trim() + ".rtf";
+
+                    FileStream fs = new FileStream(filename, FileMode.OpenOrCreate);
+                    TextRange txt = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
+                    txt.Save(fs, System.Windows.DataFormats.Rtf);
+                }
             }
         }
 
