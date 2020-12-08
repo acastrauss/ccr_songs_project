@@ -112,17 +112,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="guitar1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="min.png" />
-    <Resource Include="minimize.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="x2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="max2.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Classes\Classes.csproj">
@@ -131,40 +121,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ccr.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ccr1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="min2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="min3.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ccr31.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="ccr41.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ccr51.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ccr61.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="note1.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="note3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ccr31bw.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="ccr71.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="note4.png" />

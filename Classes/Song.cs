@@ -12,7 +12,7 @@ namespace Classes
     [Serializable]
     public class Song
     {
-        private int br_pregleda;
+        private Int64 br_pregleda;
         private string naziv_pesme;
         private DateTime datum_objave;
         private DateTime samo_datum;
@@ -36,7 +36,7 @@ namespace Classes
             this.samo_datum = datum_objave.Date;
         }
 
-        public int Br_pregleda { get => br_pregleda; set => br_pregleda = value; }
+        public Int64 Br_pregleda { get => br_pregleda; set => br_pregleda = value; }
         public string Naziv_pesme { get => naziv_pesme; set => naziv_pesme = value; }
         public DateTime Datum_objave { get => datum_objave; set => datum_objave = value; }
         public BitmapImage Cover_image { get => cover_image; set => cover_image = value; }

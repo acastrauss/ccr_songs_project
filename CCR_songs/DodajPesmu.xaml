@@ -147,7 +147,7 @@
         <Label x:Name="labelSlikaGreska" Content="" Canvas.Left="489" Canvas.Top="170" Width="153" Height="40" FontSize="15" Foreground="Red"/>
         <Label x:Name="labelTekstGreska" Content="" Canvas.Left="489" Canvas.Top="577" Width="241" FontSize="15" Foreground="Red"/>
         <TextBox x:Name="textBoxBrReci" Height="23" TextWrapping="Wrap" Text="Broj reci: 0" Width="120" Canvas.Left="868" Canvas.Top="572"/>
-        <Label x:Name="labelDodato" Content="" Canvas.Left="401" Canvas.Top="194" Width="267" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#002e0c" FontSize="25" RenderTransformOrigin="0.514,-0.7" Height="68" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="labelDodato" Content="" Canvas.Left="401" Canvas.Top="215" Width="267" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#002e0c" FontSize="25" RenderTransformOrigin="0.514,-0.7" Height="47" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <Button x:Name="buttonIsprazni" Content="Ispraznite sva&#xA;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;polja" Canvas.Left="86" Canvas.Top="525" Width="142" Height="47" Background="#0c5c0c" FontSize="15" Foreground="#ffffff" Click="buttonIsprazni_Click"/>
     </Canvas>
 </Window>

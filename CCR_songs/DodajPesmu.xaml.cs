@@ -42,7 +42,7 @@ namespace CCR_songs
             InitializeComponent();
 
             if (s != null) 
-            {
+            {   // ako se poziva za izmeni prozor
                 textBoxNaziv.Text = s.Naziv_pesme;
                 image.Source = s.Cover_image;
                 textBoxPregledi.Text = s.Br_pregleda.ToString();
@@ -207,7 +207,8 @@ namespace CCR_songs
                 Song nova = new Song(Int32.Parse(textBoxPregledi.Text.Trim()), textBoxNaziv.Text.Trim(), DateTime.Parse(dateDatumObjave.Text.Trim()), (BitmapImage)image.Source, textBoxNaziv.Text.Trim() + ".rtf");
                 
                 if (song_indx == -1) 
-                {
+                {   // dodaje se nova
+
                     MainWindow.Pesme.Add(nova);
                     labelDodato.Content = "Dodali ste pesmu!";
 
@@ -224,7 +225,8 @@ namespace CCR_songs
 
                 }
                 else 
-                {
+                {   // menja se postojeca
+
                     MainWindow.Pesme[song_indx] = nova;
                     labelDodato.Content = "Izmenili ste pesmu!";
 
@@ -278,7 +280,7 @@ namespace CCR_songs
 
         private void table_Loaded(object sender, RoutedEventArgs e)
         {
-            // for showing colors
+            // prikazivanje boja u matrici
 
             Grid grid = (Grid)sender;
             if (grid != null)
