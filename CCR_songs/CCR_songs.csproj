@@ -157,5 +157,17 @@
   <ItemGroup>
     <Resource Include="note1.jpeg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="note3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ccr31bw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ccr71.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="note4.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

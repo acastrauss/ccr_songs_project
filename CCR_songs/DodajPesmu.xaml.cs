@@ -56,6 +56,8 @@ namespace CCR_songs
                 FileStream fs = new FileStream(filename, FileMode.Open);
                 TextRange txt = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
                 txt.Load(fs, System.Windows.DataFormats.Rtf);
+
+                fs.Close();
             }
 
             comboColors.ItemsSource = typeof(Colors).GetProperties();
@@ -64,9 +66,7 @@ namespace CCR_songs
 
             comboSize.ItemsSource = font_sizes;
             comboSize.SelectedItem = font_sizes[4]; // 12 font size
-            
-            DataContext = this;
-
+         
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -90,10 +90,17 @@ namespace CCR_songs
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
 
             string appPath = System.IO.Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath) ;
+ 
+            string path_s = "";
 
-            //textBoxNaziv.Text = System.IO.Path.Combine(appPath  + "\\..\\..") ;
+            string[] temp = appPath.Split('\\');
 
-            dlg.InitialDirectory = appPath ; // dodaj da bude dva direktorijuma unazad
+            for ( int i = 0; i < temp.Length - 2; i++ )
+            {
+                path_s += temp[i] + '\\';
+            }
+
+            dlg.InitialDirectory = path_s ; 
             dlg.DefaultExt = ".jpg";
             dlg.Filter = "Pictures (.jpg)|*.jpg|(.png)|*.png";
 
@@ -174,7 +181,7 @@ namespace CCR_songs
             else 
             {
                 labelSlikaGreska.Content = "";
-                richTextBox.BorderBrush = Brushes.Green;
+                imageBorder.BorderBrush = Brushes.Green;
             }
 
             if (rtb_text == "" || rtb_text == "Unesite tekst pesme") 
@@ -209,7 +216,12 @@ namespace CCR_songs
                     FileStream fs = new FileStream(filename, FileMode.OpenOrCreate);
                     TextRange txt = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
                     txt.Save(fs, System.Windows.DataFormats.Rtf);
-                    
+
+                    fs.Close();
+
+                    buttonIsprazni_Click(null, null);
+                    labelDodato.Content = "Dodali ste pesmu!";
+
                 }
                 else 
                 {
@@ -221,6 +233,8 @@ namespace CCR_songs
                     FileStream fs = new FileStream(filename, FileMode.OpenOrCreate);
                     TextRange txt = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
                     txt.Save(fs, System.Windows.DataFormats.Rtf);
+
+                    fs.Close();
                 }
             }
         }
@@ -241,7 +255,6 @@ namespace CCR_songs
             btnUnderline.IsChecked = (temp3 != DependencyProperty.UnsetValue) && (temp3.Equals(TextDecorations.Underline));
 
             // font size
-            //object temp4 = richTextBox.Selection.GetPropertyValue(Inline.FontSizeProperty);
             if (comboSize.SelectedItem != null)
             {
                 richTextBox.Selection.ApplyPropertyValue(Inline.FontSizeProperty, comboSize.SelectedItem.ToString());
@@ -249,10 +262,7 @@ namespace CCR_songs
 
             if (comboColors.SelectedItem != null) 
             {
-                //richTextBox.Selection.ApplyPropertyValue(Inline.)
                 richTextBox.Selection.ApplyPropertyValue(Inline.ForegroundProperty, comboColors.SelectedItem.ToString().Split(' ')[1]);
-                //richTextBox.SelectionBrush = comboColors.SelectedItem.ToString().Split(' ')[1];
-               
             }
 
         }
@@ -268,6 +278,8 @@ namespace CCR_songs
 
         private void table_Loaded(object sender, RoutedEventArgs e)
         {
+            // for showing colors
+
             Grid grid = (Grid)sender;
             if (grid != null)
             {
@@ -333,7 +345,6 @@ namespace CCR_songs
 
             if (textBoxBrReci != null)
             {
-                //MessageBox.Show(arr_str.ToString());
                 textBoxBrReci.Text = "Broj reci: " + count.ToString();
             }
         }

@@ -37,6 +37,7 @@ namespace CCR_songs
             TextRange txt = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
             txt.Load(fs, System.Windows.DataFormats.Rtf);
 
+            fs.Close();
         }
 
         private void xButton_Click(object sender, RoutedEventArgs e)

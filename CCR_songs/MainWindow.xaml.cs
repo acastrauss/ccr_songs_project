@@ -22,24 +22,32 @@ namespace CCR_songs
     /// </summary>
     public partial class MainWindow : Window
     {
-        private DataIO serializer = new DataIO();
         public static BindingList<Song> Pesme { get; set; }
 
         public MainWindow()
         {
-
-            Pesme = serializer.DeSerializeObject<BindingList<Song>>("pesme.xml");
-            if (Pesme == null) //U slucaju da nista nije ucitano
-            {
-                Pesme = new BindingList<Song>(); //nova lista pa cemo u nju dodavati
-            }
-            DataContext = this; //okidac Data Bindinga
+            Pesme = new BindingList<Song>(); 
+            
+            DataContext = this; 
 
             InitializeComponent();
         }
 
         private void xButton_Click(object sender, RoutedEventArgs e)
         {
+            // ovaj deo brise sve rtf fajlove koje je program generisao, opciono se moze izbaciti ali mi nije imalo logike da fajlovi ostanu na disku
+            // kada aplikacija ne perzistira informacije nakon gasenja
+
+            string appPath = System.IO.Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath);
+
+            string[] files = System.IO.Directory.GetFiles(appPath, "*.rtf");
+
+            foreach (string file in files)
+            {
+                System.IO.File.Delete(file);
+            }
+            //
+
             this.Close();    
         }
 

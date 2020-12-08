@@ -11,10 +11,10 @@
     <Canvas Margin="0,0,0,21" Width="1096.429" Height="656.25">
         <Canvas.Resources>
             <DropShadowEffect x:Key="mouseOverShadow" Color="DarkGreen" Direction="330" Opacity="60"/>
-            
+
         </Canvas.Resources>
 
-        <Path Stroke="#212121" StrokeThickness="2" Name="UIPath" Height="582.55" Stretch="Fill" Width="1046.76" Canvas.Top="26" RenderTransformOrigin="0.5,0.5" Canvas.Left="26.12" >
+        <Path Stroke="#0c5c0c" StrokeThickness="2" Name="UIPath" Height="582.55" Stretch="Fill" Width="1046.76" Canvas.Top="26" RenderTransformOrigin="0.5,0.5" Canvas.Left="26.12" >
             <Path.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -24,7 +24,7 @@
                 </TransformGroup>
             </Path.RenderTransform>
             <Path.Fill>
-                <SolidColorBrush Color="#e3b686"></SolidColorBrush>
+                <SolidColorBrush Color="#8ed192"></SolidColorBrush>
             </Path.Fill>
             <Path.Data>
                 <PathGeometry >
@@ -79,46 +79,47 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="dodajButton" Content="Dodajte novu pesmu" Canvas.Left="114" Canvas.Top="530" Width="147" Height="48" Background="#8f4a00" FontSize="14" FontWeight="Bold" 
-                Click="dodajButton_Click" Foreground="#f7d7b5">
+        <Button x:Name="dodajButton" Content="Dodajte novu pesmu" Canvas.Left="111" Canvas.Top="530" Width="147" Height="48" Background="#0c5c0c" FontSize="14" FontWeight="Bold" 
+                Click="dodajButton_Click" Foreground="#e8ebe8">
 
         </Button>
-        <Image x:Name="image" Height="178" Canvas.Left="561" Width="402" Source="ccr31.png" Canvas.Top="45"/>
+        <Image x:Name="image" Height="218" Canvas.Left="725" Width="214" Source="ccr41.png"/>
+        <Image x:Name="image1" Height="293" Canvas.Left="-80" Canvas.Top="48" Width="369" Source="note4.png"/>
         <DataGrid x:Name="dataGridPesme" ItemsSource="{Binding Pesme}" Height="297" 
-            Canvas.Left="114" Canvas.Top="228" Width="849" SelectionMode="Single"
+            Canvas.Left="111" Canvas.Top="228" Width="849" SelectionMode="Single"
             IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left"
-            VerticalAlignment="Top" Background="#faeee3" BorderBrush="#212121" BorderThickness="2" >
+            VerticalAlignment="Top" Background="#e8ebe8" BorderBrush="#004021" BorderThickness="2" >
             <DataGrid.Resources>
                 <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
-                    <Setter Property="Background" Value="#faeee3" />
-                    <Setter Property="BorderBrush" Value="#212121"/>
+                    <Setter Property="Background" Value="#e8ebe8" />
+                    <Setter Property="BorderBrush" Value="#004021"/>
                     <Setter Property="BorderThickness" Value="1"/>
                     <Setter Property="FontWeight" Value="Bold"/>
-                    <Setter Property="Foreground" Value="#363535"/>
+                    <Setter Property="Foreground" Value="#004021"/>
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Slika" MaxWidth="150" Width="150">
-                   <DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding Cover_image}" />
+                            <Image Source="{Binding Cover_image}" Height="150"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
                 <DataGridTextColumn Header="Naziv Pesme" Binding="{Binding Naziv_pesme}" MinWidth="150" MaxWidth="200">
                     <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
+                        <Style TargetType="{x:Type TextBlock}">
                             <Setter Property="HorizontalAlignment" Value="Center" />
                             <Setter Property="VerticalAlignment" Value="Center"/>
                         </Style>
-                        
+
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Header="Datum Objave" Binding="{Binding Samo_datum}" MinWidth="150" MaxWidth="200" >
+                <DataGridTextColumn Header="Datum Objave" Binding="{Binding Samo_datum, StringFormat=d}" MinWidth="150" MaxWidth="200" >
                     <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
+                        <Style TargetType="{x:Type TextBlock}">
                             <Setter Property="HorizontalAlignment" Value="Center" />
                             <Setter Property="VerticalAlignment" Value="Center"/>
                         </Style>
@@ -126,7 +127,7 @@
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Broj Pregleda" Binding="{Binding Br_pregleda}" MinWidth="150" MaxWidth="200">
                     <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
+                        <Style TargetType="{x:Type TextBlock}">
                             <Setter Property="HorizontalAlignment" Value="Center" />
                             <Setter Property="VerticalAlignment" Value="Center"/>
                         </Style>
@@ -137,10 +138,9 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <Button x:Name="buttonDetaljnije" Content="Detaljnije" Width="150" Height="30" Background="#8f4a00" FontSize="15" FontWeight="Bold" Foreground="#f7d7b5" Click="buttonDetaljnije_Click"/>
-                                <Button x:Name="buttonIzmeni" Content="Izmeni" Width="150" Height="30" Background="#8f4a00" FontSize="15" FontWeight="Bold" Foreground="#f7d7b5" Click="buttonIzmeni_Click"/>
-                                <Button x:Name="buttonIzbrisi" Content="Izbrisi"  Width="150" Height="30" Background="#8f4a00" FontSize="15" FontWeight="Bold" Foreground="#f7d7b5" Click="buttonIzbrisi_Click" >
-                                </Button>
+                                <Button x:Name="buttonDetaljnije" Content="Detaljnije" Width="150" Height="30" Background="#0c5c0c" FontSize="15" FontWeight="Bold" Foreground="#e8ebe8" Click="buttonDetaljnije_Click"/>
+                                <Button x:Name="buttonIzmeni" Content="Izmeni" Width="150" Height="30" Background="#0c5c0c" FontSize="15" FontWeight="Bold" Foreground="#e8ebe8" Click="buttonIzmeni_Click"/>
+                                <Button x:Name="buttonIzbrisi" Content="Izbrisi"  Width="150" Height="30" Background="#0c5c0c" FontSize="15" FontWeight="Bold" Foreground="#e8ebe8" Click="buttonIzbrisi_Click" />
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -148,6 +148,6 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Label x:Name="label" Canvas.Left="114" Content="Creedence Clearwater Revival&#xD;&#xA;Diskografija" FontSize="34" FontFamily="Quire Sans" Foreground="#8f4a00" FontStyle="Italic" FontWeight="ExtraBold" Canvas.Top="48" Height="100" Width="512"/>
+        <Label x:Name="label" Canvas.Left="111" Content="Creedence Clearwater Revival&#xA;&#x9;Diskografija" FontSize="34" FontFamily="Quire Sans" Foreground="#0c5c0c" FontStyle="Italic" FontWeight="ExtraBold" Canvas.Top="67" Height="116" Width="562"/>
     </Canvas>
 </Window>
